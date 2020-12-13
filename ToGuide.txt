@@ -1,0 +1,1 @@
+copy tất cả các file vào C:\Users\Admin\AppData\Roaming\JetBrains\PhpStorm2020.2\
