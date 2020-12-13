@@ -1,0 +1,32 @@
+<application>
+  <component name="DimensionService">
+    <location key="find.popup.0.0.1920.1080" x="667" y="242" />
+    <location key="find.popup.0.0.1920.1080@120dpi" x="598" y="20" />
+    <size key="find.popup.0.0.1920.1080" width="585" height="534" />
+    <size key="find.popup.0.0.1920.1080@120dpi" width="724" height="1002" />
+  </component>
+  <component name="WindowManager">
+    <frame x="0" y="0" width="976" height="1019" extendedState="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+    </layout>
+  </component>
+  <component name="WindowStateApplicationService">
+    <state x="689" y="137" key="FileChooserDialogImpl" timestamp="1606737752847">
+      <screen x="0" y="0" width="1920" height="1019" />
+    </state>
+    <state x="551" y="111" key="FileChooserDialogImpl/0.0.1536.824/-1920.2.1920.1040" timestamp="1602233704454" />
+    <state x="689" y="140" key="FileChooserDialogImpl/0.0.1920.1040" timestamp="1604329607751" />
+    <state x="689" y="137" key="FileChooserDialogImpl/1920.0.1920.1019/0.0.1920.1019" timestamp="1606737752847" />
+    <state x="689" y="140" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040" timestamp="1606727736929" />
+    <state x="963" y="429" key="WELCOME_SCREEN" timestamp="1606727746293">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="963" y="429" key="WELCOME_SCREEN/1920.0.1920.1040/0.0.1920.1040" timestamp="1606727746293" />
+  </component>
+</application>

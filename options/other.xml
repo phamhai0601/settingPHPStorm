@@ -1,0 +1,37 @@
+<application>
+  <component name="PropertiesComponent">
+    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.95" />
+    <property name="ExpandBeforeRunStepsPanel" value="true" />
+    <property name="FileTemplates.CurrentTab" value="Includes" />
+    <property name="FileTemplates.SelectedTemplate" value="PHP File Header" />
+    <property name="FindSplitterProportion" value="0.0" />
+    <property name="JSHintOptionsTreeView.TREE_SCROLL_BAR_HORIZONTAL" value="22" />
+    <property name="JSHintOptionsTreeView.TREE_SCROLL_BAR_VERTICAL" value="1" />
+    <property name="JSHintOptionsTreeView.TREE_SELECTED_NODE_ID" value="1" />
+    <property name="MarketplacePluginsSearchHistory" value="yii&#10;bootstra&#10;bootstrao&#10;boots&#10;boot" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="NonModalCommitPromotionState" value="REJECTED" />
+    <property name="PhpStorm.InitialConfiguration" value="true" />
+    <property name="SettingsSearchHistory" value="dra" />
+    <property name="Vcs.Log.Text.Filter.History" value="lexpay" />
+    <property name="appcds.runOnSecondStart" value="PS-202.8194.11-7cf81db6746044d03ec2ed5a6584700aa6e0a8996de23f560aa67c4c9a0ef073" />
+    <property name="clt.was.used.run.anything.ui" value="true" />
+    <property name="com.intellij.history.integration.ui.views.FileHistoryDialog.0" value="300" />
+    <property name="com.intellij.history.integration.ui.views.FileHistoryDialog.1" value="800" />
+    <property name="com.intellij.history.integration.ui.views.SelectionHistoryDialog.0" value="300" />
+    <property name="com.intellij.history.integration.ui.views.SelectionHistoryDialog.1" value="800" />
+    <property name="evlsprt3.202" value="15" />
+    <property name="file.chooser.recent.files" value="D:/Ampps/www/mobileshop&#10;D:/Ampps/www/bestbuyiptv-store&#10;D:/Ampps/www/foodhouse&#10;D:/Ampps/www/xtream-ui&#10;D:/Ampps/www&#10;D:/Ampps/www/mobieshop.demo&#10;D:/Ampps/www/bestbuyiptv.demo&#10;D:/Ampps/www/Chamcong-org&#10;D:/Ampps/www/app&#10;D:/Ampps/www/iptv-admin.demo&#10;D:/Ampps/www/iptv-line.demo&#10;D:/Ampps/www/assets_management&#10;D:/Ampps/www/basic&#10;D:/Ampps/www/asset-management&#10;D:/Ampps/www/asset-management/web/index.php&#10;D:/Ampps/www/bestbuyiptv.store&#10;D:/Ampps/www/xtream-admin.demo&#10;C:/Users/Admin/Downloads/settings (1).jar&#10;C:/Users/Admin/Desktop/warm_up1" />
+    <property name="file.gist.reindex.count" value="31510" />
+    <property name="fileTypeChangedCounter" value="2" />
+    <property name="ide.memory.adjusted" value="true" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
+    <property name="lastSeenTip" value="neue-local_history.html" />
+    <property name="lastTimeTipsWereShown" value="1603940963639" />
+    <property name="last_opened_file_path" value="D:/Ampps/www" />
+    <property name="seenTips" value="neue-DBConsole.html,neue-InlineVariable.html,neue-MultiselectionInSearch1.html,neue-FixDocComment.html,neue-LensMode.html,neue-ExternalJavaDoc.html,neue-ScopesInTODO.html,neue-HighlightUsagesInFile.html,neue-ChangesView.html,neue-DirDiff.html,neue-smart_selection.html,neue-CodeCompletionNoShift.html,neue-IssueNavigation.html,neue-local_history.html" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+    <property name="ts.lib.d.ts.version" value="3.9.5" />
+    <property name="vcs.log.changes.splitter.proportion" value="0.9683544" />
+  </component>
+</application>
