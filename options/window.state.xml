@@ -1,12 +1,12 @@
 <application>
   <component name="DimensionService">
-    <location key="find.popup.0.0.1920.1080" x="667" y="242" />
+    <location key="find.popup.0.0.1920.1080" x="326" y="220" />
     <location key="find.popup.0.0.1920.1080@120dpi" x="598" y="20" />
-    <size key="find.popup.0.0.1920.1080" width="585" height="534" />
+    <size key="find.popup.0.0.1920.1080" width="992" height="624" />
     <size key="find.popup.0.0.1920.1080@120dpi" width="724" height="1002" />
   </component>
   <component name="WindowManager">
-    <frame x="0" y="0" width="976" height="1019" extendedState="6" />
+    <frame x="62" y="0" width="1858" height="1080" extendedState="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />
@@ -17,16 +17,25 @@
     </layout>
   </component>
   <component name="WindowStateApplicationService">
-    <state x="689" y="137" key="FileChooserDialogImpl" timestamp="1606737752847">
-      <screen x="0" y="0" width="1920" height="1019" />
+    <state x="653" y="145" key="FileChooserDialogImpl" timestamp="1607963466465">
+      <screen x="0" y="0" width="1819" height="1080" />
     </state>
     <state x="551" y="111" key="FileChooserDialogImpl/0.0.1536.824/-1920.2.1920.1040" timestamp="1602233704454" />
     <state x="689" y="140" key="FileChooserDialogImpl/0.0.1920.1040" timestamp="1604329607751" />
+    <state x="653" y="145" key="FileChooserDialogImpl/1920.0.1819.1080/0.0.1819.1080" timestamp="1607963466465" />
     <state x="689" y="137" key="FileChooserDialogImpl/1920.0.1920.1019/0.0.1920.1019" timestamp="1606737752847" />
     <state x="689" y="140" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040" timestamp="1606727736929" />
+    <state x="1348" y="952" width="300" height="104" key="ProcessPopupWindow" timestamp="1608631063811">
+      <screen x="0" y="0" width="1819" height="1080" />
+    </state>
+    <state x="1348" y="952" width="300" height="104" key="ProcessPopupWindow/1920.0.1819.1080/0.0.1819.1080" timestamp="1608631063811" />
     <state x="963" y="429" key="WELCOME_SCREEN" timestamp="1606727746293">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="963" y="429" key="WELCOME_SCREEN/1920.0.1920.1040/0.0.1920.1040" timestamp="1606727746293" />
+    <state x="623" y="62" key="find.popup" timestamp="1610646980936">
+      <screen x="0" y="0" width="1838" height="1080" />
+    </state>
+    <state x="623" y="62" key="find.popup/1920.0.1838.1080/0.0.1838.1080" timestamp="1610646980936" />
   </component>
 </application>

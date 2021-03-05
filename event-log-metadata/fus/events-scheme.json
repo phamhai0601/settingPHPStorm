@@ -17,7 +17,7 @@
     "rules" : {
       "event_id" : [ "{util#action}", "{enum:action.invoked|custom.action.invoked}" ],
       "event_data" : {
-        "action_id" : [ "{util#action}" ],
+        "action_id" : [ "{util#action}", "{util#rider_backend_action}" ],
         "additional.same_window" : [ "{enum#boolean}" ],
         "additional.toolwindow" : [ "{util#toolwindow}" ],
         "class" : [ "{util#class_name}" ],
@@ -27,7 +27,7 @@
         "enable" : [ "{enum#boolean}" ],
         "input_event" : [ "{util#shortcut}" ],
         "lang" : [ "{util#lang}" ],
-        "parent" : [ "{enum#parent}", "{util#class_name}", "{enum:LineMarkerActionWrapper|TreeActionWrapper|MyTreeActionWrapper}" ],
+        "parent" : [ "{enum#parent}", "{util#class_name}" ],
         "place" : [ "{util#place}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
@@ -61,20 +61,31 @@
       "from" : "191.4811"
     } ],
     "rules" : {
-      "event_id" : [ "{enum#run_anything_class}:_RunAnything_-_execution_-_{enum#run_anything_title}", "{enum#run_anything_class}:_RunAnything_-_more_-_{enum#run_anything_title}", "{enum#_}", "{enum:click.more|execute}" ],
+      "event_id" : [ "{enum#run_anything_class}:_RunAnything_-_execution_-_{enum#run_anything_title}", "{enum#run_anything_class}:_RunAnything_-_more_-_{enum#run_anything_title}", "{enum#_}" ],
       "event_data" : {
-        "group" : [ "{enum#group}", "{enum#__group}", "{util#class_name}" ],
-        "list" : [ "{enum#list}", "{enum:RunAnythingMainListModel|RunAnythingHelpListModel|third.party}", "{util#class_name}" ],
+        "group" : [ "{enum#group}", "{util#class_name}" ],
+        "list" : [ "{enum#list}", "{util#class_name}" ],
         "with_alt" : [ "{enum#boolean}" ],
         "with_shift" : [ "{enum#boolean}" ]
       },
       "enums" : {
         "_" : [ "RunAnything_-_SHIFT_HOLD", "execute", "click.more" ],
-        "__group" : [ "Bundler", "rails_generators", "Gradle_tasks", "npm_scripts", "Maven_goals", "rvm_use", "rake", "rbenv_shell", "General", "Recent", "Run_configurations", "Gradle", "Maven", "npm", "Python", "Recent_projects", "ruby", "Grunt", "third.party" ],
         "group" : [ "Bundler", "rails_generators", "Gradle_tasks", "npm_scripts", "Maven_goals", "rvm_use", "rake", "rbenv_shell", "General", "Recent", "Run_configurations", "Gradle", "Maven", "npm", "Python", "Recent_projects", "ruby", "Grunt", "third.party" ],
         "list" : [ "RunAnythingMainListModel", "RunAnythingHelpListModel", "third.party" ],
         "run_anything_class" : [ "RunAnythingMainListModel", "RunAnythingHelpListModel" ],
         "run_anything_title" : [ "Run_configurations", "Recent", "rake", "rails_generators", "Recent_projects", "Bundler", "rvm_use", "ruby", "third.party", "run.anything.group.unknown.title", "Gradle", "Maven", "Python", "npm", "General", "Gradle_tasks", "Maven_goals", "npm_scripts" ]
+      }
+    }
+  }, {
+    "id" : "appearance.file.colors",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:editor.tabs|file.colors|project.view}" ],
+      "event_data" : {
+        "enabled" : [ "{enum#boolean}" ]
       }
     }
   }, {
@@ -159,7 +170,7 @@
         "token_length" : [ "{regexp#integer}" ],
         "total_ml_time" : [ "{regexp#integer}" ],
         "typing" : [ "{regexp#integer}" ],
-        "version" : [ "{regexp#version}", "{enum:unknown}" ]
+        "version" : [ "{regexp#version}" ]
       },
       "enums" : {
         "__completion_char" : [ "ENTER", "TAB", "COMPLETE_STATEMENT", "AUTO_INSERT", "OTHER" ],
@@ -215,10 +226,39 @@
       "event_data" : {
         "client_id" : [ "{regexp#hash}" ],
         "id" : [ "{regexp#integer}" ],
-        "sessionId" : [ "{regexp#hash}" ]
+        "sessionId" : [ "{regexp#hash}" ],
+        "telephonyEnabled" : [ "{enum#boolean}" ]
       },
       "enums" : {
         "__event_id" : [ "connected", "finished", "onCircleLeftClickStart", "onCircleLeftClickStop", "onCircleRightClick", "onEditorFollowingLabelResume", "onEditorFollowingLabelStop", "onEditorFullSyncLabelStop", "onReconnection", "sessionCreated", "sessionTerminated" ]
+      }
+    }
+  }, {
+    "id" : "cwm.telephony",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:cwmSessionEnded|cwmSessionStarted|enabledFromAction}" ],
+      "event_data" : {
+        "telephonyEnabled" : [ "{enum#boolean}" ]
+      }
+    }
+  }, {
+    "id" : "cwm.telephony.devices",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum#__event_id}" ],
+      "event_data" : {
+        "duration_ms" : [ "{regexp#integer}" ],
+        "ide_activity_id" : [ "{regexp#integer}" ]
+      },
+      "enums" : {
+        "__event_id" : [ "cameraEnabled.finished", "cameraEnabled.started", "microphoneEnabled.finished", "microphoneEnabled.started", "voiceCallJoined.finished", "voiceCallJoined.started" ]
       }
     }
   }, {
@@ -246,8 +286,8 @@
       "event_data" : {
         "auto-commit" : [ "{enum#boolean}" ],
         "auto-sync" : [ "{enum#boolean}" ],
-        "dbms" : [ "{enum#__dbms}" ],
-        "introspect" : [ "{enum#_}", "{enum:no_sources|user_sources|user_and_system_sources}" ],
+        "dbms" : [ "{enum#db_name}" ],
+        "introspect" : [ "{enum#_}" ],
         "legacy-introspector" : [ "{enum#boolean}" ],
         "legacy_introspector" : [ "{enum#boolean}" ],
         "read-only" : [ "{enum#boolean}" ],
@@ -259,7 +299,6 @@
       },
       "enums" : {
         "_" : [ "on", "off", "automatic", "manual", "forbid", "no_sources", "user_sources", "user_and_system_sources" ],
-        "__dbms" : [ "ORACLE", "MEMSQL", "MARIADB", "MYSQL", "POSTGRES", "REDSHIFT", "GREENPLUM", "MSSQL", "AZURE", "SYBASE", "DB2_LUW", "DB2", "SQLITE", "HSQLDB", "H2", "DERBY", "EXASOL", "CLICKHOUSE", "CASSANDRA", "VERTICA", "HIVE", "SPARK", "HANA", "FIREBIRD", "PRESTO", "INFORMIX", "IMPALA", "NETEZZA", "PHOENIX", "SNOWFLAKE", "INGRES", "TERADATA", "OPENEDGE", "TIBERO", "FILEMAKER", "FRONTBASE", "MONGO", "UNKNOWN" ],
         "db_name" : [ "ORACLE", "MEMSQL", "MARIADB", "MYSQL", "POSTGRES", "REDSHIFT", "GREENPLUM", "MSSQL", "AZURE", "SYBASE", "DB2_LUW", "DB2", "SQLITE", "HSQLDB", "H2", "DERBY", "EXASOL", "CLICKHOUSE", "CASSANDRA", "VERTICA", "HIVE", "SPARK", "HANA", "FIREBIRD", "PRESTO", "INFORMIX", "IMPALA", "NETEZZA", "PHOENIX", "SNOWFLAKE", "INGRES", "TERADATA", "OPENEDGE", "TIBERO", "FILEMAKER", "FRONTBASE", "MONGO", "UNKNOWN" ]
       }
     }
@@ -286,7 +325,7 @@
       "event_id" : [ "{enum#_}", "{enum:manager}" ],
       "event_data" : {
         "lang" : [ "{util#lang}" ],
-        "name" : [ "{enum:local|sql|android}" ]
+        "name" : [ "{enum#_}" ]
       },
       "enums" : {
         "_" : [ "local", "sql", "android" ]
@@ -373,10 +412,12 @@
         "duration_ms" : [ "{regexp#integer}" ],
         "finish_time_ms" : [ "{regexp#integer}" ],
         "ide_activity_id" : [ "{regexp#integer}" ],
+        "scenario" : [ "{enum#scenario}" ],
         "start_time_ms" : [ "{regexp#integer}" ]
       },
       "enums" : {
-        "__event_id" : [ "autoupload.session.finished", "download.action.finished", "download.action.started", "upload.action.finished", "upload.action.started" ]
+        "__event_id" : [ "autoupload.session.finished", "download.action.finished", "download.action.started", "upload.action.finished", "upload.action.started", "create.project.from.existing.sources" ],
+        "scenario" : [ "NoServer", "LocalServer", "MountedServer", "FtpSftpServer" ]
       }
     }
   }, {
@@ -457,6 +498,7 @@
     "rules" : {
       "event_id" : [ "show.diagram->{util#diagram_provider}", "{enum:show.diagram}" ],
       "event_data" : {
+        "lang" : [ "{util#lang}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ],
@@ -521,7 +563,7 @@
         "value" : [ "{enum#backspace}", "{enum#trailingSpaces}", "{regexp#integer}", "{enum#caret_movement}" ]
       },
       "enums" : {
-        "_" : [ "caretAfterLineEnd", "caretInsideTabs", "virtualSpaceAtFileBottom", "softWraps", "softWraps.console", "softWraps.preview", "softWraps.relativeIndent", "softWraps.showAll", "ensureNewlineAtEOF", "quickDocOnMouseHover", "blinkingCaret", "blockCaret", "rightMargin", "lineNumbers", "gutterIcons", "foldingOutline", "showLeadingWhitespace", "showInnerWhitespace", "showTrailingWhitespace", "indentGuides", "animatedScroll", "dragNDrop", "wheelZoom", "mouseCamel", "inplaceRename", "preselectOnRename", "inlineDialog", "minimizeScrolling", "afterReformatNotification", "afterOptimizeNotification", "smartHome", "camelWords", "editor.inlay.parameter.hints", "breadcrumbsAbove", "all.breadcrumbs", "breadcrumbs", "intentionBulb", "richCopy", "parameterAutoPopup", "javadocAutoPopup", "completionAutoPopup", "autoPopupCharComplete", "autoCompleteBasic", "autoCompleteSmart", "parameterInfoFullSignature", "indentOnEnter", "braceOnEnter", "javadocOnEnter", "smartEnd", "autoCloseJavadocTags", "surroundByQuoteOrBrace", "pairBracketAutoInsert", "pairQuoteAutoInsert", "reformatOnRBrace", "bracesHighlight", "scopeHighlight", "identifierUnderCaretHighlight", "autoAddImports", "completionHints", "externalAnnotationsInline", "inferredAnnotationsInline", "tabExitsBracketsAndQuotes", "stripTrailingSpaces", "completionCaseSensitivity", "smartBackspace", "reformatOnPaste", "importsOnPaste", "show.actions.in.tooltip", "nextErrorActionGoesToErrorsFirst", "autoReparseDelay", "errorStripeMarkMinHeight", "suppressWarnings", "showMethodSeparators", "importHintEnabled", "caret.movement.line", "caret.movement.word", "renderDoc" ],
+        "_" : [ "caretAfterLineEnd", "caretInsideTabs", "virtualSpaceAtFileBottom", "softWraps", "softWraps.console", "softWraps.preview", "softWraps.relativeIndent", "softWraps.showAll", "ensureNewlineAtEOF", "quickDocOnMouseHover", "blinkingCaret", "blockCaret", "rightMargin", "lineNumbers", "gutterIcons", "foldingOutline", "showLeadingWhitespace", "showInnerWhitespace", "showTrailingWhitespace", "indentGuides", "animatedScroll", "dragNDrop", "wheelZoom", "mouseCamel", "inplaceRename", "preselectOnRename", "inlineDialog", "minimizeScrolling", "afterReformatNotification", "afterOptimizeNotification", "smartHome", "camelWords", "editor.inlay.parameter.hints", "breadcrumbsAbove", "all.breadcrumbs", "breadcrumbs", "intentionBulb", "richCopy", "parameterAutoPopup", "javadocAutoPopup", "completionAutoPopup", "autoPopupCharComplete", "autoCompleteBasic", "autoCompleteSmart", "parameterInfoFullSignature", "indentOnEnter", "braceOnEnter", "javadocOnEnter", "smartEnd", "autoCloseJavadocTags", "surroundByQuoteOrBrace", "pairBracketAutoInsert", "pairQuoteAutoInsert", "reformatOnRBrace", "bracesHighlight", "scopeHighlight", "identifierUnderCaretHighlight", "autoAddImports", "completionHints", "externalAnnotationsInline", "inferredAnnotationsInline", "tabExitsBracketsAndQuotes", "stripTrailingSpaces", "completionCaseSensitivity", "smartBackspace", "reformatOnPaste", "importsOnPaste", "show.actions.in.tooltip", "nextErrorActionGoesToErrorsFirst", "autoReparseDelay", "errorStripeMarkMinHeight", "suppressWarnings", "showMethodSeparators", "importHintEnabled", "caret.movement.line", "caret.movement.word", "renderDoc", "scriptletEndOnEnter", "blinkPeriod", "fileColorsEnabledForProjectView", "fileColorsEnabledForTabs", "fileColorsEnabled" ],
         "backspace" : [ "OFF", "AUTOINDENT", "INDENT" ],
         "caret_movement" : [ "NEIGHBOR", "NONE", "BOTH", "CURRENT", "START", "END" ],
         "no_" : [ "noCaretAfterLineEnd", "noCaretInsideTabs", "noVirtualSpaceAtFileBottom", "noSoftWraps", "noSoftWraps.console", "noSoftWraps.preview", "noSoftWraps.relativeIndent", "noSoftWraps.showAll", "noEnsureNewlineAtEOF", "noQuickDocOnMouseHover", "noBlinkingCaret", "noBlockCaret", "noRightMargin", "noLineNumbers", "noGutterIcons", "noFoldingOutline", "noShowLeadingWhitespace", "noShowInnerWhitespace", "noShowTrailingWhitespace", "noIndentGuides", "noAnimatedScroll", "noDragNDrop", "noWheelZoom", "noMouseCamel", "noInplaceRename", "noPreselectOnRename", "noInlineDialog", "noMinimizeScrolling", "noAfterReformatNotification", "noAfterOptimizeNotification", "noSmartHome", "noCamelWords", "noEditor.inlay.parameter.hints", "noBreadcrumbsBelow", "noBreadcrumbs", "noIntentionBulb", "noRichCopy", "noParameterAutoPopup", "noJavadocAutoPopup", "noCompletionAutoPopup", "noAutoPopupCharComplete", "noAutoCompleteBasic", "noAutoCompleteSmart", "noParameterInfoFullSignature", "noIndentOnEnter", "noBraceOnEnter", "noJavadocOnEnter", "noSmartEnd", "noAutoCloseJavadocTags", "noSurroundByQuoteOrBrace", "noPairBracketAutoInsert", "noPairQuoteAutoInsert", "noReformatOnRBrace", "noBracesHighlight", "noScopeHighlight", "noIdentifierUnderCaretHighlight", "noAutoAddImports", "noCompletionHints", "noExternalAnnotationsInline", "noInferredAnnotationsInline", "noTabExitsBracketsAndQuotes" ],
@@ -592,13 +634,14 @@
         "code" : [ "{regexp#integer}" ],
         "error" : [ "{enum:NO_LOGS|NO_UPLOADER|NO_LIBRARIES|NO_TEMP_FOLDER}", "{enum:NO_ARGUMENTS|NO_DEVICE_CONFIG|NO_RECORDER_CONFIG|NO_APPLICATION_CONFIG|IDE_NOT_CLOSING|ERROR_ON_SEND|NOT_PERMITTED_SERVER|ERROR_IN_CONFIG|NOTHING_TO_SEND|SENT_WITH_ERRORS}", "{util#class_name}", "{enum:EMPTY_CONTENT|INVALID_JSON|UNKNOWN}", "{enum:EMPTY_SERVICE_URL|UNREACHABLE_SERVICE|EMPTY_RESPONSE_BODY|ERROR_ON_LOAD}" ],
         "error_ts" : [ "{regexp#integer}" ],
+        "errors" : [ "{regexp#integer}" ],
         "external" : [ "{enum#boolean}" ],
         "failed" : [ "{regexp#integer}" ],
         "paths" : [ "{regexp#hash}" ],
         "send" : [ "{regexp#integer}" ],
         "send_ts" : [ "{regexp#integer}" ],
         "stage" : [ "{enum:LOADING|PARSING}" ],
-        "succeed" : [ "{enum#boolean}" ],
+        "succeed" : [ "{regexp#integer}", "{enum#boolean}" ],
         "total" : [ "{regexp#integer}" ],
         "version" : [ "{regexp#version}" ]
       },
@@ -634,6 +677,25 @@
     } ],
     "rules" : {
       "event_id" : [ "{enum:statistics.test.mode.enabled|team.city.version.detected}" ]
+    }
+  }, {
+    "id" : "extract.method.inplace",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum#__event_id}" ],
+      "event_data" : {
+        "changedOnHide" : [ "{enum#boolean}" ],
+        "input_event" : [ "{util#shortcut}" ],
+        "linkUsed" : [ "{enum#boolean}" ],
+        "nameChanged" : [ "{enum#boolean}" ],
+        "settingsChange" : [ "{enum:AnnotateOn|AnnotateOff|MakeStaticOn|MakeStaticOff|MakeStaticWithFieldsOn|MakeStaticWithFieldsOff}" ]
+      },
+      "enums" : {
+        "__event_id" : [ "executed", "hidePopup", "openExtractDialog", "settingsChanged", "showPopup" ]
+      }
     }
   }, {
     "id" : "file.editor",
@@ -691,6 +753,8 @@
     "rules" : {
       "event_id" : [ "{util#file_type}", "{enum:open|edit|close|select}" ],
       "event_data" : {
+        "duration_ms" : [ "{regexp#integer}" ],
+        "file_editor" : [ "{util#class_name}" ],
         "file_path" : [ "{regexp#hash}" ],
         "file_type" : [ "{util#file_type}", "{enum:DIFF}" ],
         "is_in_reader_mode" : [ "{enum#boolean}" ],
@@ -698,7 +762,8 @@
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ],
-        "schema" : [ "{enum:Maven_Groovy|Gradle|Maven}", "{enum:Maven_Groovy|Gradle|Maven|fxml}", "{util#file_type_schema}" ],
+        "schema" : [ "{enum:Maven_Groovy|Gradle|Maven|fxml}", "{util#file_type_schema}" ],
+        "time_to_show" : [ "{regexp#integer}" ],
         "type" : [ "{enum:open|edit}" ]
       }
     }
@@ -716,7 +781,7 @@
         "option_name" : [ "{enum#__option_name}" ],
         "option_value" : [ "{enum#boolean}" ],
         "regular_expressions" : [ "{enum#boolean}" ],
-        "type" : [ "{enum:FindInFile|FindInPath}", "{enum:FindInPath}", "{enum:FindInFile|FindInPath|Unknown}" ],
+        "type" : [ "{enum:FindInFile|FindInPath|Unknown}" ],
         "whole_words_only" : [ "{enum#boolean}" ],
         "with_file_filter" : [ "{enum#boolean}" ]
       },
@@ -750,8 +815,10 @@
     "rules" : {
       "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
+        "count" : [ "{regexp#integer}" ],
         "enabled" : [ "{enum#boolean}" ],
         "local_branches" : [ "{regexp#integer}" ],
+        "multiple_root" : [ "{enum#boolean}" ],
         "remote_bitbucket" : [ "{regexp#integer}" ],
         "remote_bitbucket_custom" : [ "{regexp#integer}" ],
         "remote_branches" : [ "{regexp#integer}" ],
@@ -765,7 +832,7 @@
         "version" : [ "{regexp#version}" ]
       },
       "enums" : {
-        "__event_id" : [ "repo.sync", "update.type", "save.policy", "use.builtin.ssh", "push.autoupdate", "push.update.all.roots", "cherrypick.autocommit", "warn.about.crlf", "warn.about.detached", "executable", "repository", "showGitBranchesInLog", "updateBranchesFilterInLogOnSelection", "staging.area.enabled" ],
+        "__event_id" : [ "repo.sync", "update.type", "save.policy", "use.builtin.ssh", "push.autoupdate", "push.update.all.roots", "cherrypick.autocommit", "warn.about.crlf", "warn.about.detached", "executable", "repository", "showGitBranchesInLog", "updateBranchesFilterInLogOnSelection", "staging.area.enabled", "commit_template" ],
         "__type" : [ "UNIX", "MSYS", "CYGWIN", "UNDEFINED", "NULL" ]
       }
     }
@@ -959,6 +1026,36 @@
       }
     }
   }, {
+    "id" : "ideFeaturesTrainer",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum#ide_features}", "start.swift.refactorings.{enum#ide_features}", "start.swift.{enum#ide_features}", "start.swift.navigation.{enum#ide_features}", "start.swift.editorbasics.{enum#ide_features}", "start.swift.codegeneration.{enum#ide_features}", "start.swift.codeassistance.{enum#ide_features}", "start.{enum#ide_features}", "start.refactorings.{enum#ide_features}", "start.navigation.{enum#ide_features}", "start.codeassistance.{enum#ide_features}", "passed.swift.navigation.{enum#ide_features}", "passed.swift.editorbasics.{enum#ide_features}", "passed.swift.codeassistance.{enum#ide_features}", "passed.{enum#ide_features}", "passed.refactorings.{enum#ide_features}", "passed.navigation.{enum#ide_features}", "passed.codeassistance.{enum#ide_features}", "{enum#__event_id}" ],
+      "event_data" : {
+        "action_id" : [ "{util#action_id}" ],
+        "completed_count" : [ "{regexp#integer}" ],
+        "course_size" : [ "{regexp#integer}" ],
+        "duration" : [ "{regexp#integer}" ],
+        "group_name" : [ "{enum:TUTORIALS|PROJECTS}" ],
+        "group_state" : [ "{enum:expanded|collapsed}" ],
+        "input_event" : [ "{util#shortcut}" ],
+        "keymap_scheme" : [ "{util#keymap_scheme}" ],
+        "language" : [ "{enum:java|go|ruby|swift|html|objectivec|javascript|python}", "{util#language}" ],
+        "lesson_id" : [ "{util#lesson_id}" ],
+        "module_name" : [ "{util#module_name}" ],
+        "progress_percentage" : [ "{regexp#integer}" ],
+        "shortcut" : [ "{util#shortcut_or_none}" ],
+        "task_id" : [ "{util#task_id}" ],
+        "version" : [ "{regexp#version}" ]
+      },
+      "enums" : {
+        "__event_id" : [ "start", "passed", "group_event", "start_module_action", "progress", "expand_welcome_screen", "shortcut_clicked", "restore" ],
+        "ide_features" : [ "rename", "extract.variable", "extract.method", "extract.closure", "rdt.test", "rdt.run", "rdt.debug", "toolwindows", "search", "code", "selection", "multipleselections", "move", "duplicate", "deleteline", "commentline", "collapse", "completions.basiccompletion", "quickfixes", "overrideimplement", "generate", "createfromusage", "quickpopups", "codeformatting", "smarttypecompletion", "select", "refactoringbasics", "extractvariablefield", "extractmethod", "postfixcompletion", "nextpreviousoccurrences", "jumptosource", "filestructure", "declarationimplementation", "ideactions", "hippiecompletion", "editorbasics.deleteline", "declarationandusages", "completionwithtab", "completions.statementcompletion", "completions.completionwithtab", "parameterinfo", "editorcodingassistance", "classsearch", "basiccompletion", "actions", "swift.completions.basiccompletion", "statementcompletion" ]
+      }
+    }
+  }, {
     "id" : "import.old.config",
     "builds" : [ ],
     "versions" : [ {
@@ -969,11 +1066,10 @@
       "event_data" : {
         "config_folder_exists" : [ "{enum#boolean}" ],
         "initial_import_scenario" : [ "{enum:CLEAN_CONFIGS|IMPORTED_FROM_PREVIOUS_VERSION|IMPORTED_FROM_OTHER_PRODUCT|IMPORTED_FROM_CLOUD|CONFIG_DIRECTORY_NOT_FOUND|SHOW_DIALOG_NO_CONFIGS_FOUND|SHOW_DIALOG_CONFIGS_ARE_TOO_OLD|SHOW_DIALOG_REQUESTED_BY_PROPERTY|IMPORT_SETTINGS_ACTION|RESTORE_DEFAULT_ACTION}" ],
-        "selected" : [ "{enum#__selected}" ]
+        "selected" : [ "{enum#_}" ]
       },
       "enums" : {
-        "_" : [ "FROM_PREVIOUS", "FROM_CUSTOM", "DO_NOT_IMPORT", "OTHER", "NOT_INITIALIZED" ],
-        "__selected" : [ "FROM_PREVIOUS", "FROM_CUSTOM", "DO_NOT_IMPORT", "NOT_INITIALIZED", "OTHER" ]
+        "_" : [ "FROM_PREVIOUS", "FROM_CUSTOM", "DO_NOT_IMPORT", "OTHER", "NOT_INITIALIZED" ]
       }
     }
   }, {
@@ -994,6 +1090,25 @@
       }
     }
   }, {
+    "id" : "indexing.statistics",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:finished|started}" ],
+      "event_data" : {
+        "indexing_session_id" : [ "{regexp#integer}" ],
+        "indexing_time" : [ "{regexp#integer}" ],
+        "number_of_file_providers" : [ "{regexp#integer}" ],
+        "number_of_files_indexed_by_extensions_during_scan" : [ "{regexp#integer}" ],
+        "number_of_files_indexed_by_extensions_with_loading_content" : [ "{regexp#integer}" ],
+        "number_of_files_indexed_with_loading_content" : [ "{regexp#integer}" ],
+        "number_of_scanned_files" : [ "{regexp#integer}" ],
+        "scanning_time" : [ "{regexp#integer}" ]
+      }
+    }
+  }, {
     "id" : "inlay.configuration",
     "builds" : [ ],
     "versions" : [ {
@@ -1011,7 +1126,7 @@
       },
       "enums" : {
         "__model" : [ "ts.enum.hints", "annotation.hints", "JavaLens", "js.chain.hints", "ts.chain.hints", "composer.package.version.hints", "groovy.parameters.hints", "chain.hints", "ts.type.hints", "js.type.hints", "parameter.hints.old", "return.values.hints", "KotlinLambdasHintsProvider", "KotlinReferencesTypeHintsProvider" ],
-        "__option_id" : [ "js.param.hints.show.names.for.all.args", "vuejs.show.names.for.filters", "inheritors", "java.clear.expression.type", "variables.and.fields", "ruby.show.param.grouping", "js.only.show.names.for.tagged", "ruby.non.literals", "inferred.annotations", "non.paren.single.param", "js.only.show.names.for.pipes", "oc.clangd.namehints.construct.expr", "ruby.method.name.contains.parameter.name", "usages", "oc.clangd.namehints.non.const.references", "php.pass.by.reference", "java.method.name.contains.parameter.name", "java.multiple.params.same.type", "inferred.parameter.types", "java.enums", "js.only.show.names.for.all.args", "php.show.names.for.all.args", "oc.clangd.namehints.enums", "java.build.like.method", "function.returns", "java.new.expr", "java.simple.sequentially.numbered", "vuejs.show.names.for.all.args", "parameters.in.parens", "oc.clangd.namehints.macro.expr", "js.param.hints.show.names.for.tagged", "type.parameter.list", "external.annotations", "angular.show.names.for.all.args", "angular.show.names.for.pipes", "SHOW_PROPERTY_HINT", "SHOW_LOCAL_VARIABLE_HINT", "SHOW_FUNCTION_HINT", "SHOW_PARAMETER_TYPE_HINT", "SHOW_PARAMETER_HINT", "SHOW_LAMBDA_RETURN_EXPRESSION", "SHOW_LAMBDA_IMPLICIT_PARAMETER_RECEIVER", "SHOW_SUSPENDING_CALL", "R_HINT_OPTION_WRAP_DOTS", "sql.show.column.names.in.insert.values", "sql.show.column.names.in.select", "sql.show.column.names.for.asterisk", "implicit.null.result", "related.problems", "hints.type.property", "hints.type.variable", "hints.type.function.return", "hints.type.function.parameter", "hints.lambda.return", "hints.lambda.receivers.parameters" ]
+        "__option_id" : [ "js.param.hints.show.names.for.all.args", "vuejs.show.names.for.filters", "inheritors", "java.clear.expression.type", "variables.and.fields", "ruby.show.param.grouping", "js.only.show.names.for.tagged", "ruby.non.literals", "inferred.annotations", "non.paren.single.param", "js.only.show.names.for.pipes", "oc.clangd.namehints.construct.expr", "ruby.method.name.contains.parameter.name", "usages", "oc.clangd.namehints.non.const.references", "php.pass.by.reference", "java.method.name.contains.parameter.name", "java.multiple.params.same.type", "inferred.parameter.types", "java.enums", "js.only.show.names.for.all.args", "php.show.names.for.all.args", "oc.clangd.namehints.enums", "java.build.like.method", "function.returns", "java.new.expr", "java.simple.sequentially.numbered", "vuejs.show.names.for.all.args", "parameters.in.parens", "oc.clangd.namehints.macro.expr", "js.param.hints.show.names.for.tagged", "type.parameter.list", "external.annotations", "angular.show.names.for.all.args", "angular.show.names.for.pipes", "SHOW_PROPERTY_HINT", "SHOW_LOCAL_VARIABLE_HINT", "SHOW_FUNCTION_HINT", "SHOW_PARAMETER_TYPE_HINT", "SHOW_PARAMETER_HINT", "SHOW_LAMBDA_RETURN_EXPRESSION", "SHOW_LAMBDA_IMPLICIT_PARAMETER_RECEIVER", "SHOW_SUSPENDING_CALL", "R_HINT_OPTION_WRAP_DOTS", "sql.show.column.names.in.insert.values", "sql.show.column.names.in.select", "sql.show.column.names.for.asterisk", "implicit.null.result", "related.problems", "hints.type.property", "hints.type.variable", "hints.type.function.return", "hints.type.function.parameter", "hints.lambda.return", "hints.lambda.receivers.parameters", "go.struct.unnamed.struct.fields", "go.return.parameters" ]
       }
     }
   }, {
@@ -1143,7 +1258,7 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "node.update.{enum#state}", "chrome.update.{enum#state}", "chrome.update.on.changes.{enum#state}", "{enum#_}", "{enum:use.chrome.extension|chrome.update.on.changes|node.update.on.changes}" ],
+      "event_id" : [ "node.update.{enum#state}", "chrome.update.{enum#state}", "chrome.update.on.changes.{enum#state}", "{enum#_}" ],
       "event_data" : {
         "enabled" : [ "{enum#boolean}" ]
       },
@@ -1158,13 +1273,12 @@
       "from" : "2"
     } ],
     "rules" : {
-      "event_id" : [ "{enum#_}", "{enum:language.level|completion.only.type.based}" ],
+      "event_id" : [ "{enum#_}" ],
       "event_data" : {
-        "value" : [ "{enum#level}", "{enum#boolean}", "{enum#__value}" ]
+        "value" : [ "{enum#level}", "{enum#boolean}" ]
       },
       "enums" : {
         "_" : [ "language.level", "completion.only.type.based" ],
-        "__value" : [ "js_1_5", "es5", "js_1_6", "js_1_7", "js_1_8", "js_1_8_5", "es6", "jsx", "nashorn", "flow", "unknown" ],
         "level" : [ "js_1_5", "es5", "js_1_6", "js_1_7", "js_1_8", "js_1_8_5", "es6", "jsx", "nashorn", "flow", "unknown" ]
       }
     }
@@ -1216,7 +1330,7 @@
     "rules" : {
       "event_id" : [ "{enum:k8sVersion}" ],
       "event_data" : {
-        "version" : [ "{regexp#version}", "unknown", "{enum:unknown}" ]
+        "version" : [ "{regexp#version}" ]
       }
     }
   }, {
@@ -1309,12 +1423,13 @@
       "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
         "endpoints_provider" : [ "{util#endpoint_provider_name}" ],
+        "filter_id" : [ "{enum:framework|module|type}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ]
       },
       "enums" : {
-        "__event_id" : [ "endpoints.groups.requested", "url.path.reference.variants", "url.path.segment.navigate", "mq.reference.variants", "mq.reference.navigate" ]
+        "__event_id" : [ "endpoints.groups.requested", "url.path.reference.variants", "url.path.segment.navigate", "mq.reference.variants", "mq.reference.navigate", "url.path.inlay.actions", "endpoints.tab.openapi.activated", "endpoints.tab.http.client.activated", "endpoints.list.filtered" ]
       }
     }
   }, {
@@ -1353,7 +1468,7 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum#_}", "{enum#__event_id}" ],
+      "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
         "framework" : [ "{util#framework}" ],
         "generator_id" : [ "{util#class_name}" ],
@@ -1364,8 +1479,7 @@
         "projectType" : [ "{util#project_type}" ]
       },
       "enums" : {
-        "_" : [ "finish", "attempt", "finish.add.framework", "attempt.add.framework" ],
-        "__event_id" : [ "finish", "attempt", "finish.add.framework", "attempt.add.framework", "project.generated" ]
+        "__event_id" : [ "finish", "attempt", "finish.add.framework", "attempt.add.framework", "project.generated", "project.created" ]
       }
     }
   }, {
@@ -1422,7 +1536,7 @@
       },
       "enums" : {
         "__event_id" : [ "action.invoked", "balloon.collapsed", "balloon.expanded", "closed.by.user", "event.log.balloon.shown", "hyperlink.clicked", "logged", "settings.clicked", "shown" ],
-        "notification_id" : [ "ignored.to.exclude.synchronization.notification", "externally.added.files.notification", "project.configuration.files.added.notification", "manage.ignore.files.notification", "github.missing.default.account", "github.pull.request.cannot.set.tracking.branch", "github.clone.unable.to.create.destination.dir", "github.clone.unable.to.find.destination", "github.open.in.browser.file.is.not.under.repo", "github.open.in.browser.cannot.get.last.revision", "github.rebase.success", "github.gist.cannot.create", "github.pull.request.cannot.load.branches", "github.pull.request.cannot.collect.additional.data", "github.pull.request.cannot.load.forks", "github.pull.request.failed.to.add.remote", "github.pull.request.push.failed", "github.pull.request.creation.error", "github.pull.request.cannot.collect.diff.data", "github.pull.request.cannot.find.repo", "github.pull.request.created", "github.pull.request.cannot.process.remote", "github.pull.request.no.current.branch", "github.rebase.cannot.validate.upstream.remote", "github.rebase.upstream.is.own.repo", "github.rebase.cannot.get.user.info", "github.rebase.cannot.retrieve.upstream.info", "github.rebase.cannot.configure.upstream.remote", "github.rebase.repo.not.found", "github.rebase.cannot.load.repo.info", "github.rebase.repo.is.not.a.fork", "github.share.cannot.find.git.repo", "github.share.cannot.create.repo", "github.share.project.successfully.shared", "github.share.empty.repo.created", "github.share.project.created.init.commit.failed", "github.share.init.push.failed", "github.gist.created", "github.git.repo.init.error", "unknown" ]
+        "notification_id" : [ "ignored.to.exclude.synchronization.notification", "externally.added.files.notification", "project.configuration.files.added.notification", "manage.ignore.files.notification", "github.missing.default.account", "github.pull.request.cannot.set.tracking.branch", "github.clone.unable.to.create.destination.dir", "github.clone.unable.to.find.destination", "github.open.in.browser.file.is.not.under.repo", "github.open.in.browser.cannot.get.last.revision", "github.rebase.success", "github.gist.cannot.create", "github.pull.request.cannot.load.branches", "github.pull.request.cannot.collect.additional.data", "github.pull.request.cannot.load.forks", "github.pull.request.failed.to.add.remote", "github.pull.request.push.failed", "github.pull.request.creation.error", "github.pull.request.cannot.collect.diff.data", "github.pull.request.cannot.find.repo", "github.pull.request.created", "github.pull.request.cannot.process.remote", "github.pull.request.no.current.branch", "github.rebase.cannot.validate.upstream.remote", "github.rebase.upstream.is.own.repo", "github.rebase.cannot.get.user.info", "github.rebase.cannot.retrieve.upstream.info", "github.rebase.cannot.configure.upstream.remote", "github.rebase.repo.not.found", "github.rebase.cannot.load.repo.info", "github.rebase.repo.is.not.a.fork", "github.share.cannot.find.git.repo", "github.share.cannot.create.repo", "github.share.project.successfully.shared", "github.share.empty.repo.created", "github.share.project.created.init.commit.failed", "github.share.init.push.failed", "github.gist.created", "github.git.repo.init.error", "unknown", "hg.update.unresolved.conflicts.error", "git.merge.local.changes.detected", "vcs.patch.apply.rollback.failed", "hg.qrefresh.error", "git.revert.abort.failed", "git.fetch.success", "git.branch.operation.success", "git.pull.failed", "hg.merge.warning", "vcs.commit.finished.with.warnings", "vcs.shelve.successful", "git.merge.reset.error", "git.stage.commit.successful", "git.clone.unable.to.create.destination.dir", "git.rebase.cannot.continue", "vcs.commit.canceled", "git.branch.rename.rollback.success", "hg.merge.error", "hg.rebase.error", "git.update.no.tracked.branch.error", "git.rebase.update.project.error", "hg.tag.creation.error", "git.local.changes.not.restored", "hg.clone.destination.error", "vcs.shelve.failed", "hg.merging.with.ancestor.skipped", "vcs.patch.apply.aborted", "hg.pushed.successfully", "git.remote.branch.deletion.success", "hg.repository.created", "git.tag.created", "hg.qpop.completed.with.errors", "git.branch.operation.error", "hg.compare.with.branch.error", "git.fetch.error", "hg.nothing.to.push", "git.rebase.cannot.abort", "hg.unsupported.extensions", "vcs.patch.partially.applied", "git.branches.update.successful", "hg.exception.during.merge.commit", "git.init.failed", "git.rebase.not.allowed", "hg.qfold.error", "hg.qfinish.error", "git.merge.abort.success", "git.init.error", "git.rebase.commit.edit.undo.error.repo.changed", "git.reset.failed", "git.update.detached.head.error", "git.create.branch.rollback.successful", "git.branch.checkout.failed", "git.delete.branch.on.merge", "vcs.root.added", "git.stash.failed", "vcs.patch.copied.to.clipboard", "git.merge.abort.failed", "vcs.could.not.compare.with.branch", "git.reset.successful", "git.branch.creation.failed", "git.branch.deletion.rollback.error", "hg.graft.continue.error", "hg.merge.exception", "git.rebase.abort.succeeded", "hg.debugancestor.error", "hg.log.command.execution.error", "hg.unable.to.run.executable", "hg.bookmark.error", "git.rebase.commit.edit.undo.error", "git.unstash.with.unresolved.conflicts", "git.unstash.failed", "hg.qgoto.error", "hg.clone.error", "git.clone.failed", "git.rebase.abort.failed", "hg.remote.auth.error", "vcs.uncommitted.changes.saving.error", "git.update.nothing.to.update", "git.merge.rollback.error", "hg.qnew.error", "git.checkout.success", "git.update.error", "git.cannot.resolve.conflict", "git.unstash.with.conflicts", "space.sharing.not.finished", "hg.rebase.continue.error", "git.checkout.rollback.error", "git.reset.partially.failed", "git.remote.branch.deletion.error", "hg.qrename.error", "hg.unsupported.version", "hg.repo.creation.error", "space.git.repo.init.error", "git.tag.remote.deletion.error", "hg.push.error", "vcs.cherry.pick.error", "git.repository.created", "vcs.roots.invalid", "git.stash.local.changes.detected", "git.could.not.compare.with.branch", "git.rebase.not.started", "space.project.shared.successfully", "vcs.compare.failed", "vcs.patch.apply.success.applied", "hg.qdelete.error", "hg.branch.creation.error", "git.cherry.pick.abort.failed", "git.rebase.rollback.failed", "git.merge.error", "vcs.patch.apply.cannot.find.patch.file", "git.rebase.commit.edit.undo.error.protected.branch", "git.rebase.successful", "vcs.commit.failed", "git.could.not.load.changes.of.commit", "git.unresolved.conflicts", "vcs.patch.apply.new.files.error", "hg.rebase.abort.error", "git.revert.abort.success", "git.stage.commit.error", "git.tag.not.created", "git.create.branch.rollback.error", "git.fix.tracked.not.on.branch", "vcs.shelve.deletion.undo", "hg.tag.creation.failed", "git.tag.deletion.rollback.error", "hg.update.error", "vcs.roots.registered", "hg.status.command.error", "hg.qimport.error", "vcs.patch.apply.not.patch.type.file", "vcs.commit.finished", "git.could.not.save.uncommitted.changes", "hg.rename.failed", "git.branch.rename.rollback.failed", "git.cherry.pick.abort.success", "hg.qpop.error", "git.conflict.resolving.error", "git.merge.failed", "hg.pull.error", "git.unstash.patch.applied", "hg.bookmark.name.is.empty", "hg.pull.auth.required", "git.rebase.abort", "vcs.patch.already.applied", "git.checkout.new.branch.operation.rollback.error", "hg4idea.changesets.error", "vcs.patch.creation.failed", "hg.graft.error", "hg.qpush.error", "git.checkout.new.branch.operation.rollback.successful", "github.rebase.remote.origin.not.found", "github.rebase.account.not.found", "github.rebase.multi.repo.not.supported", "rebase.error.failed.to.match.gh.repo" ]
       }
     }
   }, {
@@ -1476,7 +1590,7 @@
       "from" : "9"
     } ],
     "rules" : {
-      "event_id" : [ "{enum:ui.latency|ui.lagging}" ],
+      "event_id" : [ "{enum:ui.latency|ui.lagging|heartbeat}" ],
       "event_data" : {
         "duration_ms" : [ "{regexp#integer}" ]
       }
@@ -1490,10 +1604,10 @@
     "rules" : {
       "event_id" : [ "{enum:level_automatic_change_reverted|level_automatically_changed}" ],
       "event_data" : {
-        "new_level" : [ "{regexp#version}", "{enum:unknown}" ],
-        "old_level" : [ "{regexp#version}", "{enum:unknown}" ],
-        "revert_from_level" : [ "{regexp#version}", "{enum:unknown}" ],
-        "revert_to_level" : [ "{regexp#version}", "{enum:unknown}" ]
+        "new_level" : [ "{regexp#version}" ],
+        "old_level" : [ "{regexp#version}" ],
+        "revert_from_level" : [ "{regexp#version}" ],
+        "revert_to_level" : [ "{regexp#version}" ]
       }
     }
   }, {
@@ -1631,10 +1745,35 @@
         "coverage" : [ "{enum#boolean}" ],
         "debugger" : [ "{enum:xdebug|Zend_Debugger}" ],
         "mode" : [ "{enum:req|jit}" ],
-        "php_version" : [ "{regexp#version}", "{enum:unknown.format|unknown}" ],
+        "php_version" : [ "{regexp#version}" ],
         "profiler" : [ "{enum#boolean}" ],
         "type" : [ "{enum:zero_config|cli|web_server}" ],
         "version" : [ "{regexp#version}" ]
+      }
+    }
+  }, {
+    "id" : "php.extract.method.options",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:dialog.closed}" ],
+      "event_data" : {
+        "fold_parameters" : [ "{enum#boolean}" ],
+        "function" : [ "{enum#boolean}" ],
+        "generate_doc" : [ "{enum#boolean}" ],
+        "output_by_parameter_ref" : [ "{enum#boolean}" ],
+        "params_initializer_changed" : [ "{enum#boolean}" ],
+        "params_renamed" : [ "{enum#boolean}" ],
+        "params_reordered" : [ "{enum#boolean}" ],
+        "params_type_changed" : [ "{enum#boolean}" ],
+        "refactoring_applied" : [ "{enum#boolean}" ],
+        "renamed" : [ "{enum#boolean}" ],
+        "replace_break_continue" : [ "{enum#boolean}" ],
+        "replace_duplicates" : [ "{enum#boolean}" ],
+        "static" : [ "{enum#boolean}" ],
+        "visibility_changed" : [ "{enum#boolean}" ]
       }
     }
   }, {
@@ -1714,7 +1853,7 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "add.new.test", "add.new.class", "add.new.file", "{enum:add.new.class|add.new.class.fields.usage|add.new.test|add.new.test.fields.usage}" ],
+      "event_id" : [ "add.new.file", "{enum:add.new.class|add.new.class.fields.usage|add.new.test|add.new.test.fields.usage}" ],
       "event_data" : {
         "action_id" : [ "{enum#new_test_actions}", "{util#class_name}" ],
         "directory_was_changed" : [ "{enum#boolean}" ],
@@ -1728,12 +1867,12 @@
         "methods_table_was_changed" : [ "{enum#boolean}" ],
         "namespace_was_changed" : [ "{enum#boolean}" ],
         "show_inherited_members_was_changed" : [ "{enum#boolean}" ],
-        "source" : [ "empty", "interface", "trait", "class", "{enum:empty|interface|trait|class}" ],
+        "source" : [ "{enum:empty|interface|trait|class}" ],
         "super_fqn_was_changed" : [ "{enum#boolean}" ],
-        "target" : [ "class", "method", "none", "{enum:class|method|none}" ],
+        "target" : [ "{enum:class|method|none}" ],
         "template_was_changed" : [ "{enum#boolean}" ],
         "test_target_text_was_changed" : [ "{enum#boolean}" ],
-        "type" : [ "PHP_Class", "PHP_Trait", "PHP_Interface", "custom", "{enum:PHP_Class|PHP_Interface|PHP_Trait|custom}" ],
+        "type" : [ "{enum:PHP_Class|PHP_Interface|PHP_Trait|custom}" ],
         "with_custom_vars" : [ "{enum#boolean}" ],
         "with_inherit_member" : [ "{enum#boolean}" ]
       },
@@ -1796,7 +1935,7 @@
         "config_type" : [ "{enum:CUSTOM_LOADER|PHPUNIT_PHAR|INCLUDE_PATH}" ],
         "framework" : [ "{enum:phpunit|behat|codeception|phpspec}" ],
         "level" : [ "{enum:ide|project}" ],
-        "version" : [ "{regexp#version}", "{enum:unknown}" ]
+        "version" : [ "{regexp#version}" ]
       }
     }
   }, {
@@ -1867,8 +2006,9 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum:disabled.plugin|enabled.not.bundled.plugin}" ],
+      "event_id" : [ "{enum:disabled.plugin|enabled.not.bundled.plugin|per.project.disabled|per.project.enabled}" ],
       "event_data" : {
+        "count" : [ "{regexp#integer}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ]
@@ -1911,7 +2051,7 @@
       "event_data" : {
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
-        "plugin_version" : [ "{regexp#version}", "{enum:unknown}" ]
+        "plugin_version" : [ "{regexp#version}" ]
       }
     }
   }, {
@@ -1923,6 +2063,22 @@
     } ],
     "rules" : {
       "event_id" : [ "{util#plugin}" ]
+    }
+  }, {
+    "id" : "problems.view.sessions",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:problems.tab.hidden|problems.tab.shown|select.item}" ],
+      "event_data" : {
+        "duration_seconds" : [ "{regexp#integer}" ],
+        "preview" : [ "{enum#boolean}" ],
+        "problems_count" : [ "{regexp#integer}" ],
+        "scope_tab" : [ "{enum:CurrentFile|ProjectErrors|unknown}" ],
+        "severity" : [ "{regexp#integer}" ]
+      }
     }
   }, {
     "id" : "productivity",
@@ -2025,15 +2181,13 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "modules.count.{regexp#count}", "content.roots.count.{regexp#count}", "source.roots.count.{regexp#count}", "source.root.cookbooks-root.{regexp#count}", "source.root.java-resource.{regexp#count}", "source.root.java-source.{regexp#count}", "source.root.java-test-resource.{regexp#count}", "source.root.java-test.{regexp#count}", "source.root.kotlin-resource.{regexp#count}", "source.root.kotlin-source.{regexp#count}", "source.root.kotlin-test-resource.{regexp#count}", "source.root.kotlin-test.{regexp#count}", "excluded.roots.count.{regexp#count}", "{enum:package.prefix.used|package.prefix.not.used}", "{enum#_}", "{enum#__event_id}" ],
+      "event_id" : [ "modules.count.{regexp#count}", "content.roots.count.{regexp#count}", "source.roots.count.{regexp#count}", "source.root.cookbooks-root.{regexp#count}", "source.root.java-resource.{regexp#count}", "source.root.java-source.{regexp#count}", "source.root.java-test-resource.{regexp#count}", "source.root.java-test.{regexp#count}", "source.root.kotlin-resource.{regexp#count}", "source.root.kotlin-source.{regexp#count}", "source.root.kotlin-test-resource.{regexp#count}", "source.root.kotlin-test.{regexp#count}", "excluded.roots.count.{regexp#count}", "{enum:package.prefix.used|package.prefix.not.used}", "{enum#__event_id}" ],
       "event_data" : {
         "count" : [ "{regexp#count}", "{regexp#integer}" ],
-        "type" : [ "{enum#type}", "{enum#__type}" ]
+        "type" : [ "{enum#type}" ]
       },
       "enums" : {
-        "_" : [ "modules.total", "content.roots.total", "source.roots.total", "excluded.roots.total", "package.prefix", "source.root" ],
-        "__event_id" : [ "modules.total", "content.roots.total", "source.roots.total", "excluded.roots.total", "package.prefix", "source.root", "named.scopes.total.local", "named.scopes.total.shared" ],
-        "__type" : [ "cookbooks-root", "java-resource", "java-source", "java-test-resource", "java-test", "kotlin-resource", "kotlin-source", "kotlin-test-resource", "kotlin-test" ],
+        "__event_id" : [ "modules.total", "content.roots.total", "source.roots.total", "excluded.roots.total", "package.prefix", "source.root", "named.scopes.total.local", "named.scopes.total.shared", "project.in.wsl" ],
         "type" : [ "cookbooks-root", "java-resource", "java-source", "java-test-resource", "java-test", "kotlin-resource", "kotlin-source", "kotlin-test-resource", "kotlin-test" ]
       }
     }
@@ -2049,7 +2203,7 @@
         "class_name" : [ "{util#class_name}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
-        "plugin_version" : [ "{regexp#version}", "{enum:unknown}" ],
+        "plugin_version" : [ "{regexp#version}" ],
         "scope_class_name" : [ "{util#class_name}" ]
       }
     }
@@ -2079,7 +2233,7 @@
       "event_data" : {
         "is_conda" : [ "{enum#boolean}" ],
         "suggested" : [ "{regexp:(\\d+\\.?)*\\d+_(true|false)}" ],
-        "version" : [ "{regexp#version}", "{enum:unknown}" ]
+        "version" : [ "{regexp#version}" ]
       }
     }
   }, {
@@ -2093,6 +2247,15 @@
       "event_data" : {
         "name" : [ "{enum:install.packages|install_github}" ]
       }
+    }
+  }, {
+    "id" : "reader.mode",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:see.also.navigation}" ]
     }
   }, {
     "id" : "refactoring",
@@ -2257,6 +2420,25 @@
       }
     }
   }, {
+    "id" : "run.configuration.ui.interactions",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:modify.run.option|remove.run.option}" ],
+      "event_data" : {
+        "id" : [ "{util#run_config_id}" ],
+        "input_event" : [ "{util#shortcut}" ],
+        "option_id" : [ "{enum:before.launch.editSettings|before.launch.openToolWindow|beforeRunTasks|commandLineParameters|coverage|doNotBuildBeforeRun|environmentVariables|jrePath|log.monitor|mainClass|module.classpath|redirectInput|runParallel|shorten.command.line|target.project.path|vmParameters|workingDirectory|count|junit.test.kind|repeat|testScope}", "{enum#__option_id}" ],
+        "projectSettingsAvailable" : [ "{enum#boolean}" ],
+        "useProjectSettings" : [ "{enum#boolean}" ]
+      },
+      "enums" : {
+        "__option_id" : [ "maven.general.useProjectSettings", "maven.general.alwaysUpdateSnapshots", "maven.runner.useProjectSettings", "maven.runner.vmParameters", "maven.runner.envVariables", "maven.runner.jdk", "maven.general.settingsFileOverride.checkbox", "maven.general.usePluginRegistry", "maven.params.resolveToWorkspace", "maven.general.mavenHome", "maven.general.localRepoOverride.checkbox", "maven.params.goals", "maven.general.recursive", "maven.runner.delegateToMaven", "maven.general.produceExceptionErrorMessages", "maven.runner.targetJdk", "maven.general.threadsEditor", "maven.runner.properties", "maven.general.checksumPolicy", "maven.general.localRepoOverride.text", "maven.general.outputLevel", "maven.params.workingDir", "maven.general.showDialogWithAdvancedSettings", "maven.params.profiles", "maven.general.settingsFileOverride.text", "maven.runner.runInBackground", "maven.general.failPolicy", "maven.general.workOffline", "maven.runner.skipTests" ]
+      }
+    }
+  }, {
     "id" : "run.dashboard",
     "builds" : [ {
       "from" : "191.4811"
@@ -2306,9 +2488,22 @@
         "typedSymbolKeys" : [ "{regexp#integer}" ]
       },
       "enums" : {
-        "__contributorID" : [ "FileSearchEverywhereContributor", "SearchEverywhereContributor.All", "ClassSearchEverywhereContributor", "RecentFilesSEContributor", "ActionSearchEverywhereContributor", "SymbolSearchEverywhereContributor", "TopHitSEContributor", "RunConfigurationsSEContributor", "YAMLKeysSearchEverywhereContributor", "CommandsContributor", "third.party" ],
-        "__currentTabId" : [ "FileSearchEverywhereContributor", "SearchEverywhereContributor.All", "ClassSearchEverywhereContributor", "ActionSearchEverywhereContributor", "SymbolSearchEverywhereContributor", "third.party" ],
+        "__contributorID" : [ "FileSearchEverywhereContributor", "SearchEverywhereContributor.All", "ClassSearchEverywhereContributor", "RecentFilesSEContributor", "ActionSearchEverywhereContributor", "SymbolSearchEverywhereContributor", "TopHitSEContributor", "RunConfigurationsSEContributor", "YAMLKeysSearchEverywhereContributor", "CommandsContributor", "third.party", "Vcs.Git", "UrlSearchEverywhereContributor", "GitSearchEverywhereContributor" ],
+        "__currentTabId" : [ "FileSearchEverywhereContributor", "SearchEverywhereContributor.All", "ClassSearchEverywhereContributor", "ActionSearchEverywhereContributor", "SymbolSearchEverywhereContributor", "third.party", "Vcs.Git" ],
         "__event_id" : [ "dialogOpen", "tabSwitched", "navigateThroughGroups", "contributorItemChosen", "moreItemChosen", "commandUsed", "commandCompleted", "dialogClosed", "sessionFinished" ]
+      }
+    }
+  }, {
+    "id" : "selenium.usages",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:allure.reference.click|selenium.code.completion|selenoid.configure|selenoid.launch}" ],
+      "event_data" : {
+        "completion_type" : [ "{enum:html-tag|html-attribute|html-input-type|html-id|html-name|capability|css-property|css-class|css-pseudo|allure-username|allure-label}" ],
+        "reference_type" : [ "{enum:web|username}", "{enum:label}" ]
       }
     }
   }, {
@@ -2318,7 +2513,7 @@
       "from" : "2"
     } ],
     "rules" : {
-      "event_id" : [ "{enum#_}", "{enum:not.default}" ],
+      "event_id" : [ "{enum#_}" ],
       "event_data" : {
         "component" : [ "{util#component_name}" ],
         "default_project" : [ "{enum#boolean}" ],
@@ -2327,7 +2522,7 @@
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ],
-        "type" : [ "bool", "int", "float", "{enum:bool|int|float}", "{enum#__type}" ],
+        "type" : [ "{enum#__type}" ],
         "value" : [ "{enum#boolean}", "{regexp#integer}", "{regexp#float}", "{util#setting_value}" ]
       },
       "enums" : {
@@ -2377,12 +2572,13 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum:local.index.loaded|downloaded|attached|attach.failed.incompatible}" ],
+      "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
         "averageDownloadSpeed" : [ "{regexp#integer}" ],
         "downloadTime" : [ "{regexp#integer}" ],
+        "finishType" : [ "{enum:success|cancelled|error}" ],
         "indexId" : [ "{regexp#hash}" ],
-        "kind" : [ "{enum#kind_enum}" ],
+        "kind" : [ "{enum:project|jdk|mvn|other}" ],
         "matchingFbIndexes" : [ "{regexp#integer}" ],
         "matchingStubIndexes" : [ "{regexp#integer}" ],
         "mismatchingFbIndexes" : [ "{util#index_id}" ],
@@ -2395,7 +2591,7 @@
         "unpackedSize" : [ "{regexp#integer}" ]
       },
       "enums" : {
-        "kind_enum" : [ "project", "jdk", "mvn", "other" ]
+        "__event_id" : [ "local.index.loaded", "downloaded", "attached", "attach.failed.incompatible", "download.started", "download.finished" ]
       }
     }
   }, {
@@ -2449,6 +2645,22 @@
       }
     }
   }, {
+    "id" : "status.bar.widgets",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:widget}" ],
+      "event_data" : {
+        "enabled" : [ "{enum#boolean}" ],
+        "id" : [ "{util#status_bar_widget_factory}" ],
+        "plugin" : [ "{util#plugin}" ],
+        "plugin_type" : [ "{util#plugin_type}" ],
+        "plugin_version" : [ "{util#plugin_version}" ]
+      }
+    }
+  }, {
     "id" : "suggested.refactorings",
     "builds" : [ ],
     "versions" : [ {
@@ -2499,7 +2711,7 @@
     "rules" : {
       "event_id" : [ "{enum:working.copy}" ],
       "event_data" : {
-        "format" : [ "{regexp#version}", "{enum:unknown}" ]
+        "format" : [ "{regexp#version}" ]
       }
     }
   }, {
@@ -2520,12 +2732,11 @@
       "event_id" : [ "{enum#os}", "{enum:os.name|os.timezone|machine.id}" ],
       "event_data" : {
         "name" : [ "{enum#os}" ],
-        "release" : [ "{enum#linux}", "{enum#__release}" ],
-        "value" : [ "{regexp#time_zone}", "{enum:Z}", "{regexp#hash}" ],
+        "release" : [ "{enum#linux}" ],
+        "value" : [ "{regexp#time_zone}", "{enum:Z}", "{regexp#hash}", "{enum:unknown}" ],
         "version" : [ "{regexp#version}", "{enum:unknown.format}", "{enum#__version}" ]
       },
       "enums" : {
-        "__release" : [ "unknown", "alpine", "amzn", "antergos", "arch", "centos", "debian", "deepin", "elementary", "fedora", "galliumos", "gentoo", "kali", "linuxmint", "manjaro", "neon", "nixos", "ol", "opensuse", "opensuse-leap", "opensuse-tumbleweed", "freedesktop", "parrot", "raspbian", "rhel", "sabayon", "solus", "ubuntu", "zorin", "custom" ],
         "__version" : [ "6.0", "6.1", "6.2", "6.3", "10.0" ],
         "linux" : [ "unknown", "alpine", "amzn", "antergos", "arch", "centos", "debian", "deepin", "elementary", "fedora", "galliumos", "gentoo", "kali", "linuxmint", "manjaro", "neon", "nixos", "ol", "opensuse", "opensuse-leap", "opensuse-tumbleweed", "freedesktop", "parrot", "raspbian", "rhel", "sabayon", "solus", "ubuntu", "zorin", "custom" ]
       },
@@ -2542,18 +2753,19 @@
     "rules" : {
       "event_id" : [ "{enum#_}", "{enum#__event_id}" ],
       "event_data" : {
+        "arch" : [ "{enum#__arch}" ],
         "bit" : [ "{regexp#integer}" ],
         "enabled" : [ "{enum#boolean}" ],
-        "name" : [ "{enum#gc}", "{enum#jvm_option}", "{enum#__name}", "{enum:Xmx|Xms|SoftRefLRUPolicyMSPerMB|ReservedCodeCacheSize}" ],
+        "gigabytes" : [ "{regexp#integer}" ],
+        "name" : [ "{enum#gc}", "{enum#jvm_option}" ],
         "value" : [ "{regexp#integer}" ],
-        "vendor" : [ "{enum#jvm_vendor}", "{enum#__vendor}" ],
+        "vendor" : [ "{enum#jvm_vendor}" ],
         "version" : [ "{regexp#version}" ]
       },
       "enums" : {
         "_" : [ "cores", "garbage.collector", "jvm", "jvm.bit", "jvm.option" ],
-        "__event_id" : [ "cores", "garbage.collector", "jvm.option", "jvm", "debug.agent" ],
-        "__name" : [ "Shenandoah", "G1_Young_Generation", "G1_Old_Generation", "Copy", "MarkSweepCompact", "PS_MarkSweep", "PS_Scavenge", "ParNew", "ConcurrentMarkSweep" ],
-        "__vendor" : [ "JetBrains", "Apple", "Oracle", "Sun", "IBM", "Azul", "Other" ],
+        "__arch" : [ "x86", "x86_64", "arm64", "other", "unknown" ],
+        "__event_id" : [ "cores", "garbage.collector", "jvm.option", "jvm", "debug.agent", "memory.size" ],
         "gc" : [ "Shenandoah", "G1_Young_Generation", "G1_Old_Generation", "Copy", "MarkSweepCompact", "PS_MarkSweep", "PS_Scavenge", "ParNew", "ConcurrentMarkSweep" ],
         "jvm_option" : [ "Xmx", "Xms", "SoftRefLRUPolicyMSPerMB", "ReservedCodeCacheSize" ],
         "jvm_vendor" : [ "JetBrains", "Apple", "Oracle", "Sun", "IBM", "Azul", "Other" ]
@@ -2620,10 +2832,10 @@
       "from" : "6"
     } ],
     "rules" : {
-      "event_id" : [ "{util#toolwindow}", "{enum:activated}", "{enum:activated|shown|hidden}" ],
+      "event_id" : [ "{util#toolwindow}", "{enum:activated|shown|hidden}" ],
       "event_data" : {
         "Location" : [ "{enum#__Location}" ],
-        "Source" : [ "{enum:StripeButton|ToolWindowHeader|ToolWindowHeaderAltClick|Content|Switcher|SwitcherSearch|ToolWindowsWidget|RemoveStripeButtonAction|HideOnShowOther|HideSide|CloseFromSwitcher|ActivateActionMenu|ActivateActionKeyboardShortcut|ActivateActionGotoAction|ActivateActionOther|CloseAction|HideButton|HideToolWindowAction|HideSideWindowsAction|HideAllWindowsAction|JumpToLastWindowAction}" ],
+        "Source" : [ "{enum:StripeButton|ToolWindowHeader|ToolWindowHeaderAltClick|Content|Switcher|SwitcherSearch|ToolWindowsWidget|RemoveStripeButtonAction|HideOnShowOther|HideSide|CloseFromSwitcher|ActivateActionMenu|ActivateActionKeyboardShortcut|ActivateActionGotoAction|ActivateActionOther|CloseAction|HideButton|HideToolWindowAction|HideSideWindowsAction|HideAllWindowsAction|JumpToLastWindowAction}", "{enum:ToolWindowSwitcher}", "{enum:SquareStripeButton}" ],
         "ViewMode" : [ "{enum#__ViewMode}" ],
         "id" : [ "{util#toolwindow}" ],
         "plugin" : [ "{util#plugin}" ],
@@ -2652,7 +2864,7 @@
       "from" : "6"
     } ],
     "rules" : {
-      "event_id" : [ "{util#dialog_class}", "{enum:show|close}", "{enum:show|close|help.clicked}" ],
+      "event_id" : [ "{util#dialog_class}", "{enum:show|close|help.clicked}" ],
       "event_data" : {
         "code" : [ "{enum:0|1|2}" ],
         "dialog_class" : [ "{util#dialog_class}" ],
@@ -2705,18 +2917,15 @@
       "from" : "191.4811"
     } ],
     "rules" : {
-      "event_id" : [ "UI.font.size[{regexp#integer}]", "Presentation.mode.font.size[{regexp#integer}]", "Editor.font.size[{regexp#integer}]", "IDE.editor.font.size[{regexp#integer}]", "Console.font.size[{regexp#integer}]", "QuickDoc.font.size[{enum#_}]", "UI.font.name[{enum#font}]", "Editor.font.name[{enum#font}]", "IDE.editor.font.name[{enum#font}]", "Console.font.name[{enum#font}]", "{enum:editor.lineSpacing}", "{enum#metrics}", "{enum#__event_id}" ],
+      "event_id" : [ "UI.font.size[{regexp#integer}]", "Presentation.mode.font.size[{regexp#integer}]", "Editor.font.size[{regexp#integer}]", "IDE.editor.font.size[{regexp#integer}]", "Console.font.size[{regexp#integer}]", "QuickDoc.font.size[{enum#_}]", "UI.font.name[{enum#font}]", "Editor.font.name[{enum#font}]", "IDE.editor.font.name[{enum#font}]", "Console.font.name[{enum#font}]", "{enum#metrics}" ],
       "event_data" : {
-        "font_name" : [ "{enum#font}", "{enum#__font_name}" ],
-        "font_size" : [ "{regexp#integer}", "{enum#_}", "{enum#__font_size}" ],
+        "font_name" : [ "{enum#font}" ],
+        "font_size" : [ "{regexp#integer}", "{enum#_}" ],
         "line_spacing" : [ "{regexp#float}" ],
         "value" : [ "{regexp#float}" ]
       },
       "enums" : {
         "_" : [ "X_SMALL", "X_LARGE", "XX_SMALL", "XX_LARGE", "SMALL", "MEDIUM", "LARGE" ],
-        "__event_id" : [ "UI", "Presentation.mode", "Editor", "IDE.editor", "Console", "QuickDoc", "editor.lineSpacing" ],
-        "__font_name" : [ "Monospaced", "Menlo", "DejaVu_Sans_Mono", ".SFNSText-Regular", "Fira_Code", "Lucida_Grande", "Source_Code_Pro", "Segoe_UI", "Ubuntu", ".SF_NS_Text", "Consolas", "Noto_Sans_Regular", "Microsoft_YaHei", "Fira_Code_Retina", "Cantarell_Regular", "Microsoft_YaHei_UI", "Monaco", "Noto_Sans", "Dialog.plain", "Fira_Code_Medium", "Courier_New", "Tahoma", "Hack", "DejaVu_Sans", "Ubuntu_Mono", "Droid_Sans_Mono", "Dialog", "Inconsolata", "Malgun_Gothic", "Cantarell", "DialogInput", "Yu_Gothic_UI_Regular", "Roboto", "Liberation_Mono", "Lucida_Console", "D2Coding", "Lucida_Sans_Typewriter", "Fira_Code_Light", "Droid_Sans", "Verdana", "Arial", "Roboto_Mono", "Segoe_UI_Semibold", "SF_Mono", "Droid_Sans_Mono_Slashed", "LucidaGrande", "Operator_Mono", "Ayuthaya", "Hasklig", "Iosevka", "Andale_Mono", "Anonymous_Pro", "Anonymous_Pro_for_Powerline", "D2Coding_ligature", "Dank_Mono", "DejaVu_Sans_Mono_for_Powerline", "Fantasque_Sans_Mono", "Fira_Mono_for_Powerline", "Hack_Nerd_Font", "IBM_Plex_Mono", "Meslo_LG_L_DZ_for_Powerline", "Meslo_LG_M_for_Powerline", "Meslo_LG_S_for_Powerline", "Microsoft_YaHei_Mono", "Noto_Mono_for_Powerline", "Noto_Sans_Mono", "PT_Mono", "PragmataPro", "SourceCodePro+Powerline+Awesome_Regular", "Source_Code_Pro_Semibold", "Source_Code_Pro_for_Powerline", "Ubuntu_Mono_derivative_Powerline", "YaHei_Consolas_Hybrid", "mononoki", "Bitstream_Vera_Sans_Mono", "Comic_Sans_MS", "Courier_10_Pitch", "Cousine", "2Coding_ligature", "Droid_Sans_Mono_Dotted", "Inconsolata-dz", "Input", "Input_Mono", "Meslo_LG_M_DZ_for_Powerline", "Migu_2M", "Monoid", "Operator_Mono_Book", "Operator_Mono_Lig", "Operator_Mono_Medium", "Abadi_MT_Condensed_Extra_Bold", "Al_Bayan", "Meiryo", "Microsoft_JhengHei", "Microsoft_Yahei_UI", "SansSerif", "Ubuntu_Light", "JetBrains_Mono", ".AppleSystemUIFont", ".SFNS-Regular" ],
-        "__font_size" : [ "X_SMALL", "X_LARGE", "XX_SMALL", "XX_LARGE", "SMALL", "MEDIUM", "LARGE" ],
         "font" : [ "Monospaced", "Menlo", "DejaVu_Sans_Mono", ".SFNSText-Regular", "Fira_Code", "Lucida_Grande", "Source_Code_Pro", "Segoe_UI", "Ubuntu", ".SF_NS_Text", "Consolas", "Noto_Sans_Regular", "Microsoft_YaHei", "Fira_Code_Retina", "Cantarell_Regular", "Microsoft_YaHei_UI", "Monaco", "Noto_Sans", "Dialog.plain", "Fira_Code_Medium", "Courier_New", "Tahoma", "Hack", "DejaVu_Sans", "Ubuntu_Mono", "Droid_Sans_Mono", "Dialog", "Inconsolata", "Malgun_Gothic", "Cantarell", "DialogInput", "Yu_Gothic_UI_Regular", "Roboto", "Liberation_Mono", "Lucida_Console", "D2Coding", "Lucida_Sans_Typewriter", "Fira_Code_Light", "Droid_Sans", "Verdana", "Arial", "Roboto_Mono", "Segoe_UI_Semibold", "SF_Mono", "Droid_Sans_Mono_Slashed", "LucidaGrande", "Operator_Mono", "Ayuthaya", "Hasklig", "Iosevka", "Andale_Mono", "Anonymous_Pro", "Anonymous_Pro_for_Powerline", "D2Coding_ligature", "Dank_Mono", "DejaVu_Sans_Mono_for_Powerline", "Fantasque_Sans_Mono", "Fira_Mono_for_Powerline", "Hack_Nerd_Font", "IBM_Plex_Mono", "Meslo_LG_L_DZ_for_Powerline", "Meslo_LG_M_for_Powerline", "Meslo_LG_S_for_Powerline", "Microsoft_YaHei_Mono", "Noto_Mono_for_Powerline", "Noto_Sans_Mono", "PT_Mono", "PragmataPro", "SourceCodePro+Powerline+Awesome_Regular", "Source_Code_Pro_Semibold", "Source_Code_Pro_for_Powerline", "Ubuntu_Mono_derivative_Powerline", "YaHei_Consolas_Hybrid", "mononoki", "Bitstream_Vera_Sans_Mono", "Comic_Sans_MS", "Courier_10_Pitch", "Cousine", "2Coding_ligature", "Droid_Sans_Mono_Dotted", "Inconsolata-dz", "Input", "Input_Mono", "Meslo_LG_M_DZ_for_Powerline", "Migu_2M", "Monoid", "Operator_Mono_Book", "Operator_Mono_Lig", "Operator_Mono_Medium", "Abadi_MT_Condensed_Extra_Bold", "Al_Bayan", "Meiryo", "Microsoft_JhengHei", "Microsoft_Yahei_UI", "SansSerif", "Ubuntu_Light", "JetBrains_Mono", ".AppleSystemUIFont", ".SFNS-Regular" ],
         "metrics" : [ "UI", "Presentation.mode", "Editor", "IDE.editor", "Console", "QuickDoc", "editor.lineSpacing" ]
       }
@@ -2800,7 +3009,7 @@
       "from" : "20"
     } ],
     "rules" : {
-      "event_id" : [ "{util#class_name}", "{enum#type}", "{enum:select|reset|apply|search}" ],
+      "event_id" : [ "{util#class_name}", "{enum:select|reset|apply|search}" ],
       "event_data" : {
         "characters" : [ "{regexp#integer}" ],
         "configurable" : [ "{util#class_name}" ],
@@ -2821,20 +3030,23 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum#_}", "{enum:tip.shown|dialog.shown|next.tip|previous.tip}" ],
+      "event_id" : [ "{enum#_}", "{enum#__event_id}" ],
       "event_data" : {
         "algorithm" : [ "{enum#__algorithm}", "{enum:ONE_TIP_SURROUNDWITH_SUMMER2020|ONE_TIP_EXTENDSELECTION_SUMMER2020|ONE_TIP_SWITCHER_SUMMER2020|LOCAL_SORT_SUMMER2020}" ],
         "feature_id" : [ "{util#tip_info}" ],
         "filename" : [ "{util#tip_info}" ],
+        "keep_showing_after" : [ "{enum#boolean}" ],
+        "keep_showing_before" : [ "{enum#boolean}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ],
-        "type" : [ "{enum#type}", "{enum:automatically|manually}" ],
-        "version" : [ "{regexp#version}", "{enum:unknown}" ]
+        "type" : [ "{enum#type}" ],
+        "version" : [ "{regexp#version}" ]
       },
       "enums" : {
         "_" : [ "shown.automatically", "shown.manually", "dialog.shown", "next.tip", "previous.tip" ],
         "__algorithm" : [ "TOP", "MATRIX_ALS", "MATRIX_BPR", "PROB", "WIDE", "CODIS", "RANDOM", "WEIGHTS_LIN_REG", "default_shuffle", "unknown", "ONE_TIP_SUMMER2020", "RANDOM_SUMMER2020" ],
+        "__event_id" : [ "tip.shown", "dialog.shown", "next.tip", "previous.tip", "dialog.closed" ],
         "type" : [ "automatically", "manually" ]
       }
     }
@@ -2858,11 +3070,11 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum#_}", "{enum:build|licencing}" ],
+      "event_id" : [ "{enum#_}" ],
       "event_data" : {
         "is_jb_team" : [ "{enum#boolean}" ],
-        "metadata" : [ "{regexp#license_metadata}" ],
-        "value" : [ "{enum#value}", "{enum:eap|release}", "{enum:evaluation|license}" ]
+        "metadata" : [ "{regexp#license_metadata}", "{enum:unknown}" ],
+        "value" : [ "{enum#value}" ]
       },
       "enums" : {
         "_" : [ "eap", "release", "evaluation", "license", "build", "licencing" ],
@@ -2947,7 +3159,7 @@
       "from" : "2"
     } ],
     "rules" : {
-      "event_id" : [ "{enum#_}", "{enum#__event_id}" ],
+      "event_id" : [ "{enum#_}" ],
       "event_data" : {
         "count" : [ "{regexp#integer}" ],
         "is_base_dir" : [ "{enum#boolean}" ],
@@ -2955,12 +3167,10 @@
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ],
-        "project" : [ "{util#project}" ],
         "vcs" : [ "{enum#vcs}", "{enum:None}" ]
       },
       "enums" : {
-        "_" : [ "active.vcs", "mapping", "project.mapped.root", "mapped.roots", "changelists", "unversioned.files", "ignored.files" ],
-        "__event_id" : [ "active.vcs", "mapping", "project.mapped.root", "mapped.roots", "changelists", "unversioned.files", "ignored.files" ]
+        "_" : [ "active.vcs", "mapping", "project.mapped.root", "mapped.roots", "changelists", "unversioned.files", "ignored.files" ]
       }
     }
   }, {
@@ -3071,7 +3281,8 @@
     "id" : "vcs.github.pullrequests",
     "builds" : [ ],
     "versions" : [ {
-      "from" : "1"
+      "from" : "1",
+      "to" : "3"
     } ],
     "rules" : {
       "event_id" : [ "{enum:toolwindow}" ],
@@ -3209,7 +3420,6 @@
       "event_id" : [ "{enum#_}" ],
       "event_data" : {
         "enabled" : [ "{enum#boolean}" ],
-        "project" : [ "{util#project}" ],
         "value" : [ "{enum#value}" ]
       },
       "enums" : {
@@ -3225,7 +3435,7 @@
       "to" : "2"
     } ],
     "rules" : {
-      "event_id" : [ "{regexp#version}", "{enum:unknown}" ]
+      "event_id" : [ "{regexp#version}" ]
     }
   }, {
     "id" : "vfs",
@@ -3261,7 +3471,20 @@
         "theme_name" : [ "{enum#look_and_feel}" ]
       },
       "enums" : {
-        "__event_id" : [ "color.blindness.changed", "editor.font.changed", "ide.font.changed", "keymap.changed", "laf.changed", "plugins.modified", "project.search", "screen.hidden", "screen.shown", "screen.tab.selected" ]
+        "__event_id" : [ "color.blindness.changed", "editor.font.changed", "ide.font.changed", "keymap.changed", "laf.changed", "plugins.modified", "project.search", "screen.hidden", "screen.shown", "screen.tab.selected", "debugger.processes.search", "debugger.attach" ]
+      }
+    }
+  }, {
+    "id" : "wsl.installations",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:count}" ],
+      "event_data" : {
+        "count" : [ "{regexp#integer}" ],
+        "version" : [ "{regexp#integer}" ]
       }
     }
   } ],
@@ -3270,8 +3493,8 @@
       "boolean" : [ "true", "false", "TRUE", "FALSE" ],
       "build_tools" : [ "Maven", "Gradle", "gradle", "sbt", "Clojure_Deps", "clojure_deps", "Pants", "pants", "bsp", "Kobalt", "kobalt", "undefined.system", "third.party", "SPM", "CompDB", "Compilation_Database", "Makefile" ],
       "keymaps" : [ "Mac_OS_X_10.5+", "$$default", "Default_for_GNOME", "Rider", "Eclipse", "Emacs", "Default_for_KDE", "Mac_OS_X", "ReSharper_OSX", "NetBeans_6.5", "Visual_Studio", "Rider_OSX", "TextMate", "Eclipse_(Mac_OS_X)", "ReSharper", "Xcode", "unknown", "custom", "Sublime_Text_(Mac_OS_X)", "Sublime_Text", "Default_for_XWin", "$default", "JBuilder", "VS_Code", "Visual_Studio_OSX", "Visual_Assist", "VSCode", "macOS_System_Shortcuts" ],
-      "look_and_feel" : [ "Darcula", "IntelliJ", "Light", "High_contrast", "Dark_purple", "Cyan_light", "Rider_Dark", "Gray", "macOS_Light", "IntelliJ_Light", "Windows_10_Light", "Solarized_Dark", "Solarized_Light", "Monocai", "Xcode-Dark", "vuesion-theme", "Visual_Studio_Code_Dark_Plus", "Monokai_Pro", "Monokai_Pro_(Filter_Spectrum)", "Monokai_Pro_(Filter_Machine)", "Monokai_Pro_(Filter_Octagon)", "Monokai_Pro_(Filter_Ristretto)", "Atom_One_Dark", "NotReallyMDTheme", "Darcula_Darker", "Espresso_Light", "Spacegray", "Gradianto_Nature_Green", "Nord", "Obsidian", "Obsidian_Bright", "One_Dark", "Roboticket_Light", "Sublime", "Trash_Panda_Theme" ],
-      "os" : [ "Windows", "Mac", "Linux", "FreeBSD", "Other" ],
+      "look_and_feel" : [ "Darcula", "IntelliJ", "Light", "High_contrast", "Dark_purple", "Cyan_light", "Rider_Dark", "Gray", "macOS_Light", "IntelliJ_Light", "Windows_10_Light", "Solarized_Dark", "Solarized_Light", "Monocai", "Xcode-Dark", "vuesion-theme", "Visual_Studio_Code_Dark_Plus", "Monokai_Pro", "Monokai_Pro_(Filter_Spectrum)", "Monokai_Pro_(Filter_Machine)", "Monokai_Pro_(Filter_Octagon)", "Monokai_Pro_(Filter_Ristretto)", "Atom_One_Dark", "NotReallyMDTheme", "Darcula_Darker", "Espresso_Light", "Spacegray", "Gradianto_Nature_Green", "Nord", "Obsidian", "Obsidian_Bright", "One_Dark", "Roboticket_Light", "Sublime", "Trash_Panda_Theme", "ReSharper_Dark", "ReSharper_Light", "Rider_Light", "Rider_Melon_Dark", "Rider_Melon_Light", "Visual_Assist_Dark", "Visual_Assist_Light", "Visual_Studio_Dark", "Visual_Studio_Light" ],
+      "os" : [ "Windows", "Mac", "Linux", "FreeBSD", "ChromeOS", "Other" ],
       "plugin_type" : [ "PLATFORM", "JB_BUNDLED", "JB_NOT_BUNDLED", "LISTED", "NOT_LISTED", "UNKNOWN" ],
       "state" : [ "enabled", "disabled" ],
       "vcs" : [ "Git", "git", "SVN", "svn", "hg4idea", "Perforce", "perforce", "TFS", "tfs", "SourceSafe", "sourcesafe", "ClearCase", "clearcase", "CVS", "cvs", "TFVS", "tfvs", "VSS", "vss" ]
@@ -3281,12 +3504,12 @@
       "float" : "-?\\d+\\.\\d+(E\\-?\\d+)?",
       "hash" : "[0-9A-Fa-f]{40,64}",
       "integer" : "-?\\d+(\\+)?",
-      "kotlin_version" : "\\d\\.\\d\\.\\d{1,3}-(dev|eap|release)-(\\d+-)?(AppCode|CLion|IJ|Studio)[0-9\\-\\.]+",
+      "kotlin_version" : "(\\d+-)?\\d\\.\\d\\.\\d{1,3}-(dev|eap|release)-(\\d+-)?(AppCode|CLion|IJ|Studio)[0-9\\-\\.]+",
       "license_metadata" : "[0-9]{10}[A-Z]{4}[-0-9X]{6}",
       "mcu_name" : "UNKNOWN|UPDATE_FAILED|(STM32[A-Z]{1,2}\\w+)",
       "series" : "^(?:AreaRange|Area|Bubble|Heatmap|Pie|Stock|Scatter|Line|Bar)+(?:_(?:AreaRange|Area|Bubble|Heatmap|Pie|Stock|Scatter|Line|Bar)+)*$",
-      "version" : "(\\d+\\.?)*\\d+"
+      "version" : "Unknown|unknown.format|unknown|UNKNOWN|((\\d+\\.?)*\\d+)"
     }
   },
-  "version" : "1587"
+  "version" : "1750"
 }

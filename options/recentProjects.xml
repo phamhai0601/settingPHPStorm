@@ -96,17 +96,6 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="D:/Ampps/www/app">
-          <value>
-            <RecentProjectMetaInfo projectWorkspaceId="1kXIif8Dt5xv4JtI2yrE15WoBdP">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="PS-202.6948.87" />
-              <option name="buildTimestamp" value="1598521964996" />
-              <option name="productionCode" value="PS" />
-              <option name="projectOpenTimestamp" value="1605840637701" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="D:/Ampps/www/Chamcong-org">
           <value>
             <RecentProjectMetaInfo projectWorkspaceId="1idFHnAX4vZESurqtxdHO8mZblG">
@@ -143,38 +132,170 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
-        <entry key="D:/Ampps/www">
-          <value>
-            <RecentProjectMetaInfo projectWorkspaceId="1l0d4oECtcDhV8gUNspyPL1zQs4">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="PS-202.8194.11" />
-              <option name="buildTimestamp" value="1606304712946" />
-              <option name="productionCode" value="PS" />
-              <option name="projectOpenTimestamp" value="1606737753704" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
-        <entry key="D:/Ampps/www/xtream-ui">
-          <value>
-            <RecentProjectMetaInfo projectWorkspaceId="1l2Adxmt8ReAblYqJbQAUXWYlPX">
-              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="build" value="PS-202.8194.11" />
-              <option name="buildTimestamp" value="1606304706230" />
-              <frame x="-469" y="110" width="1920" height="1019" extendedState="6" />
-              <option name="productionCode" value="PS" />
-              <option name="projectOpenTimestamp" value="1606786209072" />
-            </RecentProjectMetaInfo>
-          </value>
-        </entry>
         <entry key="D:/Ampps/www/foodhouse">
           <value>
             <RecentProjectMetaInfo projectWorkspaceId="1l83Yus8VphwUJURScv0KQULyir">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="PS-202.8194.11" />
-              <option name="buildTimestamp" value="1606304737165" />
+              <option name="buildTimestamp" value="1606304753149" />
               <frame x="-8" y="-8" width="1936" height="1035" extendedState="6" />
               <option name="productionCode" value="PS" />
-              <option name="projectOpenTimestamp" value="1606964941217" />
+              <option name="projectOpenTimestamp" value="1607873768046" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/app_chat">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1leebA3ZvxD5eDmuFKhe6A8IalO">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304717248" />
+              <frame x="-8" y="-8" width="1835" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1607962052453" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/demo_sosket">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1lehSp4IysCkHQHowOUnRZZnQNj">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304733750" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1607999316724" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1l0d4oECtcDhV8gUNspyPL1zQs4">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304744889" />
+              <frame x="-8" y="-8" width="1844" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1609120307553" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/demo_vue">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1mGZDU77g2ZAAv1Jf1w3t1ZvZrn">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304709708" />
+              <frame x="-8" y="-8" width="1844" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1609212992039" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/ctms">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1mJyktWqNxidxmfXGNCm1o4uOeT">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304704299" />
+              <frame x="1912" y="-8" width="1936" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1609301287683" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/yii_socket">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1mady7mPOPXaNqZeZxMXKfzqAPe">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304739287" />
+              <frame x="-8" y="-8" width="1854" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1609735886341" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/ratchet">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1mP9LvbGFQIxoV0hJMG4UCh6YE7">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304720819" />
+              <frame x="-422" y="106" width="1828" height="903" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1609808974820" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/phpClient">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1mbId3RGnXxSW2lhyyqtsbVq5oI">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304702381" />
+              <frame x="-8" y="-8" width="1854" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1609858673871" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/chart_CoinEx">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1mdMeBdppHgsVfYmowfcVom3nPc">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304734422" />
+              <frame x="8" y="197" width="1838" height="882" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1610424570272" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/Wunderlist">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1lnH1wLYB7kbkphrEvp9QnPkrYj">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304750163" />
+              <frame x="-107" y="4" width="1819" height="1080" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1610674793634" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/app">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1n5dtDLF2Cr9RiibbpkqEbdZAIz">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304731981" />
+              <frame x="-8" y="-8" width="1854" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1610684097203" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/auto_fix">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1nEBwGWWccOqnVzTEQFznqa80Cw">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304702024" />
+              <frame x="-8" y="-8" width="1854" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1610981585064" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/app-chat">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1nCvjQjvdtD7ZJPSZfR8FoozEYG">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304723013" />
+              <frame x="-92" y="201" width="1838" height="1080" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1611117627832" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -183,10 +304,34 @@
             <RecentProjectMetaInfo projectWorkspaceId="1l0lTsFhKRA0P4yFdnNJgGyoJon">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="PS-202.8194.11" />
-              <option name="buildTimestamp" value="1606304718632" />
-              <frame x="0" y="0" width="976" height="1019" extendedState="6" />
+              <option name="buildTimestamp" value="1606304723013" />
+              <frame x="-711" y="170" width="1828" height="999" extendedState="6" />
               <option name="productionCode" value="PS" />
-              <option name="projectOpenTimestamp" value="1607657660060" />
+              <option name="projectOpenTimestamp" value="1611135027606" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/xtream-ui">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1l2Adxmt8ReAblYqJbQAUXWYlPX">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304726808" />
+              <frame x="-469" y="110" width="1920" height="1019" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1614646649872" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Ampps/www/app_ctms_web">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1onedAeEFK6o9aUNjBbjoM9ndff">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PS-202.8194.11" />
+              <option name="buildTimestamp" value="1606304752856" />
+              <frame x="983" y="-8" width="945" height="1096" extendedState="6" />
+              <option name="productionCode" value="PS" />
+              <option name="projectOpenTimestamp" value="1614851903314" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -195,10 +340,10 @@
             <RecentProjectMetaInfo opened="true" projectWorkspaceId="1l0d6ztDb19LzhG13F7YuNYOtZT">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="PS-202.8194.11" />
-              <option name="buildTimestamp" value="1606304718632" />
-              <frame x="-8" y="-8" width="1936" height="1035" extendedState="6" />
+              <option name="buildTimestamp" value="1606304716691" />
+              <frame x="62" y="0" width="1858" height="1080" extendedState="6" />
               <option name="productionCode" value="PS" />
-              <option name="projectOpenTimestamp" value="1607657711815" />
+              <option name="projectOpenTimestamp" value="1614915979465" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -207,14 +352,26 @@
     <option name="recentPaths">
       <list>
         <option value="D:/Ampps/www/bestbuyiptv-store" />
-        <option value="D:/Ampps/www/mobileshop" />
-        <option value="D:/Ampps/www/foodhouse" />
+        <option value="D:/Ampps/www/app_ctms_web" />
         <option value="D:/Ampps/www/xtream-ui" />
+        <option value="D:/Ampps/www/mobileshop" />
+        <option value="D:/Ampps/www/app-chat" />
+        <option value="D:/Ampps/www/auto_fix" />
+        <option value="D:/Ampps/www/app" />
+        <option value="D:/Ampps/www/Wunderlist" />
+        <option value="D:/Ampps/www/chart_CoinEx" />
+        <option value="D:/Ampps/www/phpClient" />
+        <option value="D:/Ampps/www/ratchet" />
+        <option value="D:/Ampps/www/yii_socket" />
+        <option value="D:/Ampps/www/ctms" />
+        <option value="D:/Ampps/www/demo_vue" />
         <option value="D:/Ampps/www" />
+        <option value="D:/Ampps/www/demo_sosket" />
+        <option value="D:/Ampps/www/app_chat" />
+        <option value="D:/Ampps/www/foodhouse" />
         <option value="D:/Ampps/www/mobieshop.demo" />
         <option value="D:/Ampps/www/bestbuyiptv.demo" />
         <option value="D:/Ampps/www/Chamcong-org" />
-        <option value="D:/Ampps/www/app" />
         <option value="D:/Ampps/www/iptv-admin.demo" />
         <option value="D:/Ampps/www/iptv-line.demo" />
         <option value="D:/Ampps/www/assets_management" />
